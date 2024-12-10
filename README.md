@@ -436,3 +436,15 @@ With this steps we have almost everything configured on the local part.
 ![image.png](image%2027.png)
 
 ![image.png](image%2028.png)
+
+# KPI`s
+
+![alt text](image-1.png)
+
+![alt text](image-2.png)
+
+![alt text](image-3.png)
+
+![alt text](image-4.png)
+
+![alt text](image-5.png)
