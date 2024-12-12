@@ -253,6 +253,7 @@ With this steps we have almost everything configured on the local part.
 <aside>
 <img src="https://www.notion.so/icons/video-camera_orange.svg" alt="https://www.notion.so/icons/video-camera_orange.svg" width="40px" />
 
+[2024-12-10_14-02-52.mp4](2024-12-10_14-02-52.mp4)
 
 </aside>
 
@@ -279,6 +280,17 @@ With this steps we have almost everything configured on the local part.
 # Create Azure Synapse Analytics and Datalake Storage Gen2
 
 ---
+
+<aside>
+<img src="https://www.notion.so/icons/video-camera_orange.svg" alt="https://www.notion.so/icons/video-camera_orange.svg" width="40px" />
+
+- Videos
+    
+    [2024-12-10_11-51-13.mp4](2024-12-10_11-51-13.mp4)
+    
+    [2024-12-10_11-53-42.mp4](2024-12-10_11-53-42.mp4)
+    
+</aside>
 
 1. The first step is opening our resource group from the resource groups tab:
 
@@ -310,7 +322,6 @@ With this steps we have almost everything configured on the local part.
 
 ---
 
-
 1. Access the datalake storage account inside Azure portal
 2. Go to the “Storage brower” tab
 3. Click on “Blob containers”
@@ -334,6 +345,13 @@ With this steps we have almost everything configured on the local part.
 # Create Azure Databricks
 
 ---
+
+<aside>
+<img src="https://www.notion.so/icons/video-camera_orange.svg" alt="https://www.notion.so/icons/video-camera_orange.svg" width="40px" />
+
+[2024-12-10_10-16-35.mp4](2024-12-10_10-16-35.mp4)
+
+</aside>
 
 1. We look for Azure Databricks in the azure search bar and click on “Azure Databricks”
 
@@ -385,7 +403,7 @@ With this steps we have almost everything configured on the local part.
 
 # Connecting SQL Database to Azure Datafactory
 
-1. Access the key vault inside Azure portal
+1. Access the datafactory inside Azure portal
 2. Click on “Launch studio”
 3. Click on the “Manage” tab at the left sidebar
 4. Click on “Integration Runtimes”
@@ -397,6 +415,8 @@ With this steps we have almost everything configured on the local part.
 
 # Creating the Pipelines for Copying Data from SQL Database to Azure Datalake Storage Gen2
 
+## Lookup for getting table names
+
 1. From the Azure Data Factory studio click on the “Author” tab
 2. Click on the “+” icon, then click on “pipeline”
 3. In the Activity search bar write “Lookup”, drag and drop the result to the right
@@ -404,16 +424,163 @@ With this steps we have almost everything configured on the local part.
 5. Add a new source dataset
 6. We search and select sql server
 7. On the linked service section we select “onpremsqlserver” and click “ok”
+8. Going back to the settings tab, we have to change the “Use query” selection to “Query”
+9. Then we paste the folowing code into the textarea for “Query”
+    
+    ```jsx
+    SELECT
+    s.name AS SchemaName,
+    t.name AS TableName
+    FROM sys.tables t
+    INNER JOIN sys.schemas s
+    ON t.schema_id = s.schema_id
+    WHERE s.name = 'SalesLT'
+    ```
+    
+10. After that we uncheck the box for “First row only”
+
+## For-Each for copying the tables into the adls2
+
+1. In the “Activities” left sidebar, look for “ForEach” and drag it into the board
+2. Link the Lookup activity with the ForEach with a success arrow
+3. Select the “ForEach” activity
+4. Go to the “Settings” tab
+5. Click on the “Items” text area, then click on “Add dynamic content”
+6. In the new section write the following code:
+    
+    ```python
+    @activity('Look for all tables').output.value
+    ```
+    
+7. Click on “ok”
+
+### Creating the copy activity inside the ForEach
+
+1. While having “ForEach” selected, click on the “Activities” tab
+2. Click on the pencil icon
+3. In the “Activities” left sidebar, look for “Copy data” and drag it into the board
+4. Select it and go to the “Source” tab
+5. Click on “+New”
+6. Select “SQL server”
+7. Change the name to something like “SqlServerCopy” and select “onpremsqlserver” as the Linked service
+8. Click “OK”
 
 # Creating the Computing Unit in Azure Databricks
+
+1. Go to the “compute” section
+2. click on “create” button
+3. give a custom name
+4. select “single node”
+5. select in Access mode “No isolation shared”
+6. leave default runtime
+7. Select in Node type “Standard_DS3_v2
 
 # Creating the Notebooks in Azure Databricks
 
 ## Creating the Connection Notebook
 
+```python
+configs = {
+    "fs.azure.account.key.datalakegroup2.blob.core.windows.net": ""
+}
+```
+
+```python
+dbutils.fs.mount(
+    source="wasbs://bronze@datalakegroup2.blob.core.windows.net/",
+    mount_point="/mnt/bronze",
+    extra_configs=configs
+)
+```
+
+```python
+dbutils.fs.mount(
+    source="wasbs://silver@datalakegroup2.blob.core.windows.net/",
+    mount_point="/mnt/silver",
+    extra_configs=configs
+)
+```
+
+```python
+dbutils.fs.mount(
+    source="wasbs://gold@datalakegroup2.blob.core.windows.net/",
+    mount_point="/mnt/gold",
+    extra_configs=configs
+)
+```
+
 ## Creating the First Transformation Notebooks (bronze - silver)
 
+we need to create a table and store in it every single register we have in mnt/bronze/SalesLT
+
+```python
+table_name = []
+
+for i in dbutils.fs.ls('mnt/bronze/SalesLT/'):
+    table_name.append(i.name.split('/')[0])
+```
+
+In this code fragment we have a module to format every date contained in each parquet file so that they have the same structure.
+
+```python
+from pyspark.sql.functions import from_utc_timestamp, date_format
+from pyspark.sql.types import TimestampType
+
+for i in table_name:
+  path = '/mnt/bronze/SalesLT/' + i + '/' + i + '.parquet'
+  df = spark.read.format('parquet').load(path)
+  column = df.columns
+
+  for col in column:
+    if "Date" in col or "date" in col:
+      df = df.withColumn(col, date_format(from_utc_timestamp(df[col].cast(TimestampType()), "UTC"), "yyyy-MM-dd"))
+
+  output_path = '/mnt/silver/SalesLT/' +i +'/'
+  df.write.format('delta').mode("overwrite").save(output_path)
+```
+
+After this, we can use df.display() to see if the transformation has worked out correctly
+
 ## Creating the Second Transformation Notebooks (silver - gold)
+
+We store every subdirectory name in a list
+
+```python
+table_name = []
+
+for i in dbutils.fs.ls('mnt/silver/SalesLT/'):
+  print(i.name)
+  table_name.append(i.name.split('/')[0])
+```
+
+load the delta files in each silver path into a dataframe named “df”
+
+```python
+for name in table_name:
+  path = '/mnt/silver/SalesLT/' + name
+  print(path)
+  df = spark.read.format('delta').load(path)
+```
+
+To get a further transformation in the data, we start by changing the column name of each column into Snake Case (separated by _ )
+
+Later we rename every column with the new name in the dataframe df
+
+this way we are treating data in a columnar way, a process considered an upgrade from silver to gold
+
+```python
+column_names = df.columns
+
+for old_col_name in column_names:
+  # Convert column name from ColumnName to Column_Name format
+  new_col_name = "".join(["_" + char if char.isupper() and not old_col_name[i - 1].isupper() else char for i, char in enumerate(old_col_name)]).lstrip("_")
+      
+  # Change the column name using withColumnRenamed and regexp_replace
+  df = df.withColumnRenamed(old_col_name, new_col_name)
+
+  output_path = '/mnt/gold/SalesLT/' +name +'/'
+  df.write.format('delta').mode("overwrite").option("mergeSchema", "true").save(output_path)
+```
 
 # Connecting Azure Databricks to Data Factory
 
@@ -437,14 +604,6 @@ With this steps we have almost everything configured on the local part.
 
 ![image.png](image%2028.png)
 
-# KPI`s
+# Alternative Solution
 
-![alt text](image-1.png)
-
-![alt text](image-2.png)
-
-![alt text](image-3.png)
-
-![alt text](image-4.png)
-
-![alt text](image-5.png)
+![image.png](image%2029.png)
