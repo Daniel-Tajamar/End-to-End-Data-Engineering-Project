@@ -19,3 +19,5 @@
 5. And finally, we review and create it.
 
 ![img/image.png](img/image%2014.png)
+
+[Siguiente](https://github.com/Daniel-Tajamar/End-to-End-Data-Engineering-Project/blob/main/create-azure-synapse-analytics-and-datalake-storage-gen2.md)
