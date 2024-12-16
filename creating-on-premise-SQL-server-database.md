@@ -35,3 +35,5 @@ C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\Backup
 ![img/image.png](img/image%203.png)
 
 ![img/image.png](img/image%204.png)
+
+[Siguiente](https://github.com/Daniel-Tajamar/End-to-End-Data-Engineering-Project/blob/main/configure-SQL-server-for-remote-access.md)
