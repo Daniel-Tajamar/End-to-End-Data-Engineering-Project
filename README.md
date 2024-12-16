@@ -140,23 +140,23 @@ We store the credentials (primarily passwords) to enhance the security of all th
 
 First, we need to create and access our workspace. Once inside the workspace, go to **Settings** > **Users:**
 
-![img/1.png](1.png)
+![img/1.png](img/1.png)
 
 Add user:
 
-![img/2.png](2.png)
+![img/2.png](img/2.png)
 
 Once added, we can configure each user by clicking on the **︙**
 
-![img/3.png](3.png)
+![img/3.png](img/3.png)
 
 Another useful management configuration is the **“Groups”** setting, where you can create workgroups and assign roles to each group in order to manage user groups effectively:
 
-![img/4.png](4.png)
+![img/4.png](img/4.png)
 
 Just like with the “users” settings, we can create a new group and edit each of the existing ones by clicking on the **︙**
 
-![img/5.png](5.png)
+![img/5.png](img/5.png)
 
 ---
 
@@ -164,23 +164,23 @@ Just like with the “users” settings, we can create a new group and edit each
 
 We access the “Secrets” setting of our Key Vault:
 
-![img/6.png](6.png)
+![img/6.png](img/6.png)
 
 We create a new secret, give it a name and copy the “Secret Value” :
 
-![img/7.png](7.png)
+![img/7.png](img/7.png)
 
 Where can we find it? We need to go to our Databricks workspace, launch it, and then go to **User** > **Settings**. Once there, navigate to **Developer** > **Access Tokens :**
 
-![img/8.png](8.png)
+![img/8.png](img/8.png)
 
 Generate a new token and, very importantly, make sure to copy it, as this is the only time we can view its content:
 
-![img/9.png](9.png)
+![img/9.png](img/9.png)
 
 Back to Key Vault, we copy the value:
 
-![img/10.png](10.png)
+![img/10.png](img/10.png)
 
 ---
 
