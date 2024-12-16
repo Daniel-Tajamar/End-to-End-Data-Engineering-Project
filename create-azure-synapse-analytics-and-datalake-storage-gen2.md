@@ -25,3 +25,5 @@
 5. We are not modifying any of the next config pages, so we can skip directly to “Review and create”
 
 ![img/image.png](img/image%2022.png)
+
+[Siguiente](https://github.com/Daniel-Tajamar/End-to-End-Data-Engineering-Project/blob/main/creating-bronze-silver-gold-hierarchy.md)
