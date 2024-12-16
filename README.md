@@ -2,7 +2,7 @@
 
 Notion Webpage: [https://prickle-orangutan-450.notion.site/End-to-End-Data-Engineering-Project-15873b21d05080c3acaedb35bfb57fbb](https://www.notion.so/End-to-End-Data-Engineering-Project-15873b21d05080c3acaedb35bfb57fbb?pvs=21)
 
-![img/Azure Key Vault (1).png](Azure_Key_Vault_(1).png)
+![img/Azure Key Vault (1).png](img/Azure_Key_Vault_(1).png)
 
 The proposed solution aims to address the challenge of migrating an on-premises SQL database to the Azure cloud, transforming the data, and leveraging it to gain insights using visualization tools.
 
