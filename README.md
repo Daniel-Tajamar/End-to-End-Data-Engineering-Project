@@ -2,7 +2,7 @@
 
 Notion Webpage: [https://prickle-orangutan-450.notion.site/End-to-End-Data-Engineering-Project-15873b21d05080c3acaedb35bfb57fbb](https://www.notion.so/End-to-End-Data-Engineering-Project-15873b21d05080c3acaedb35bfb57fbb?pvs=21)
 
-![Azure Key Vault (1).png](Azure_Key_Vault_(1).png)
+![img/Azure Key Vault (1).png](Azure_Key_Vault_(1).png)
 
 The proposed solution aims to address the challenge of migrating an on-premises SQL database to the Azure cloud, transforming the data, and leveraging it to gain insights using visualization tools.
 
@@ -11,7 +11,7 @@ To simulate the data, we used the AdventureWorks 2017 ([link](https://learn.micr
 ## INGESTION
 
 <aside>
-<img src="Azure-Data-Factory-Logo-Transparent-removebg-preview.png" alt="Azure-Data-Factory-Logo-Transparent-removebg-preview.png" width="40px" />
+<img src="img/Azure-Data-Factory-Logo-Transparent-removebg-preview.png" alt="Azure-Data-Factory-Logo-Transparent-removebg-preview.png" width="40px" />
 
 ### Azure Data Factory
 
@@ -22,7 +22,7 @@ This is a Microsoft cloud service that enables the integration and orchestration
 Using Azure Data Factory, we created a pipeline where the locally hosted tables are transferred to the cloud into a Data Lake.
 
 <aside>
-<img src="azure-data-lake-microsoft-azure-sql-database-big-data-data-lake-removebg-preview.png" alt="azure-data-lake-microsoft-azure-sql-database-big-data-data-lake-removebg-preview.png" width="40px" />
+<img src="img/azure-data-lake-microsoft-azure-sql-database-big-data-data-lake-removebg-preview.png" alt="azure-data-lake-microsoft-azure-sql-database-big-data-data-lake-removebg-preview.png" width="40px" />
 
 ### Azure Data Lake Gen 2
 
@@ -35,7 +35,7 @@ In our case, we store the data in an Azure Data Lake Gen 2 and used Databricks t
 ## TRANSFORMATION
 
 <aside>
-<img src="azure-databricks5940-removebg-preview.png" alt="azure-databricks5940-removebg-preview.png" width="40px" />
+<img src="img/azure-databricks5940-removebg-preview.png" alt="azure-databricks5940-removebg-preview.png" width="40px" />
 
 ### Azure Databricks
 
@@ -46,7 +46,7 @@ This is a data analytics service built on Apache Spark, optimized for Azure. It 
 Using Databricks, the data is transformed across the three layers:
 
 <aside>
-<img src="bronze-removebg-preview.png" alt="bronze-removebg-preview.png" width="40px" />
+<img src="img/bronze-removebg-preview.png" alt="bronze-removebg-preview.png" width="40px" />
 
 **Bronze Layer (Raw Layer)**:
 
@@ -55,7 +55,7 @@ Contains raw, unprocessed data as it is received from the sources. This data may
 </aside>
 
 <aside>
-<img src="silver_PNG17190-removebg-preview.png" alt="silver_PNG17190-removebg-preview.png" width="40px" />
+<img src="img/silver_PNG17190-removebg-preview.png" alt="silver_PNG17190-removebg-preview.png" width="40px" />
 
 **Silver Layer (Clean Layer)**:
 
@@ -66,7 +66,7 @@ For each loaded table, it is checked whether any column contains the word "Date"
 </aside>
 
 <aside>
-<img src="R.png" alt="R.png" width="40px" />
+<img src="img/R.png" alt="R.png" width="40px" />
 
 **Gold Layer (Aggregated Layer):**
 
@@ -81,7 +81,7 @@ This renaming is achieved through a loop that iterates over the characters of ea
 ## LOADING
 
 <aside>
-<img src="OIP-removebg-preview.png" alt="OIP-removebg-preview.png" width="40px" />
+<img src="img/OIP-removebg-preview.png" alt="OIP-removebg-preview.png" width="40px" />
 
 ### Azure Synapse Analytics
 
@@ -96,7 +96,7 @@ It serves as a bridge to connect the data from the Gold layer with the visualiza
 ## REPORTING
 
 <aside>
-<img src="png-clipart-power-bi-business-intelligence-microsoft-analytics-microsoft-text-rectangle-removebg-preview.png" alt="png-clipart-power-bi-business-intelligence-microsoft-analytics-microsoft-text-rectangle-removebg-preview.png" width="40px" />
+<img src="img/png-clipart-power-bi-business-intelligence-microsoft-analytics-microsoft-text-rectangle-removebg-preview.png" alt="png-clipart-power-bi-business-intelligence-microsoft-analytics-microsoft-text-rectangle-removebg-preview.png" width="40px" />
 
 ### Power BI
 
@@ -109,7 +109,7 @@ It is ideal for making data-driven decisions, thanks to its ease of use, advance
 ## SECURITY AND GOVERNANCE
 
 <aside>
-<img src="Entra-ID-logo.webp" alt="Entra-ID-logo.webp" width="40px" />
+<img src="img/Entra-ID-logo.webp" alt="Entra-ID-logo.webp" width="40px" />
 
 ### Entra ID
 
@@ -122,7 +122,7 @@ Microsoft **Entra** also includes other security solutions, such as **Entra Perm
 It is used to manage the credentials and access permissions for each member of our project.
 
 <aside>
-<img src="51-514963_azure-key-vault-logo__1_-removebg-preview.png" alt="51-514963_azure-key-vault-logo__1_-removebg-preview.png" width="40px" />
+<img src="img/51-514963_azure-key-vault-logo__1_-removebg-preview.png" alt="51-514963_azure-key-vault-logo__1_-removebg-preview.png" width="40px" />
 
 ### Azure Key Vault
 
@@ -140,23 +140,23 @@ We store the credentials (primarily passwords) to enhance the security of all th
 
 First, we need to create and access our workspace. Once inside the workspace, go to **Settings** > **Users:**
 
-![1.png](1.png)
+![img/1.png](1.png)
 
 Add user:
 
-![2.png](2.png)
+![img/2.png](2.png)
 
 Once added, we can configure each user by clicking on the **︙**
 
-![3.png](3.png)
+![img/3.png](3.png)
 
 Another useful management configuration is the **“Groups”** setting, where you can create workgroups and assign roles to each group in order to manage user groups effectively:
 
-![4.png](4.png)
+![img/4.png](4.png)
 
 Just like with the “users” settings, we can create a new group and edit each of the existing ones by clicking on the **︙**
 
-![5.png](5.png)
+![img/5.png](5.png)
 
 ---
 
@@ -164,23 +164,23 @@ Just like with the “users” settings, we can create a new group and edit each
 
 We access the “Secrets” setting of our Key Vault:
 
-![6.png](6.png)
+![img/6.png](6.png)
 
 We create a new secret, give it a name and copy the “Secret Value” :
 
-![7.png](7.png)
+![img/7.png](7.png)
 
 Where can we find it? We need to go to our Databricks workspace, launch it, and then go to **User** > **Settings**. Once there, navigate to **Developer** > **Access Tokens :**
 
-![8.png](8.png)
+![img/8.png](8.png)
 
 Generate a new token and, very importantly, make sure to copy it, as this is the only time we can view its content:
 
-![9.png](9.png)
+![img/9.png](9.png)
 
 Back to Key Vault, we copy the value:
 
-![10.png](10.png)
+![img/10.png](10.png)
 
 ---
 
@@ -202,25 +202,25 @@ C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\Backup
 
 1. Open  SQL Server Managment Studio 20
 
-![image.png](image.png)
+![img/image.png](img/image.png)
 
 1. When it connects, we have to right clic on “databases” and then “Restore Database”
 
-![cAP1.png](cAP1.png)
+![img/cAP1.png](img/cAP1.png)
 
 1. Choose device and clic the three dots on the right
 
-![image.png](image%201.png)
+![img/image.png](img/image%201.png)
 
 1. A new window will show in which we´re selecting “Add”
 
-![image.png](image%202.png)
+![img/image.png](img/image%202.png)
 
 1. Finally, we select the .bak file and every “Ok” button until this window shows up:
 
-![image.png](image%203.png)
+![img/image.png](img/image%203.png)
 
-![image.png](image%204.png)
+![img/image.png](img/image%204.png)
 
 ## Configure SQL Server for remote access:
 
@@ -228,21 +228,21 @@ To make sure we can connect through Azure to our local database this are the set
 
 1. Create new user, under “Security” > “Users”, right clic and “New User”:
 
-![image.png](image%205.png)
+![img/image.png](img/image%205.png)
 
 1. Fill the fields…
 
-![image.png](image%206.png)
+![img/image.png](img/image%206.png)
 
 1. Check db_datareader under the Membership tab and clic “OK”
 
-![image.png](image%207.png)
+![img/image.png](img/image%207.png)
 
 1. Also ensure that server authentication is on “SQL Server and Windows Authentication mode” and the server allows remote connections. So, to check this we have to right clic on the server:
 
-![image.png](image%208.png)
+![img/image.png](img/image%208.png)
 
-![image.png](image%209.png)
+![img/image.png](img/image%209.png)
 
 With this steps we have almost everything configured on the local part.
 
@@ -250,73 +250,56 @@ With this steps we have almost everything configured on the local part.
 
 ---
 
-<aside>
-<img src="https://www.notion.so/icons/video-camera_orange.svg" alt="https://www.notion.so/icons/video-camera_orange.svg" width="40px" />
-
-[2024-12-10_14-02-52.mp4](2024-12-10_14-02-52.mp4)
-
-</aside>
 
 1. Once in Azure, we click on “Resource groups”:
 
-![image.png](image%2010.png)
+![img/image.png](img/image%2010.png)
 
 1. Inside Resource groups, we create a new one:
 
-![image.png](image%2011.png)
+![img/image.png](img/image%2011.png)
 
 1. We give the resource group a name (I´m calling ours “ddmrs-proyecto-1”), and the region in which the group is going to be located.
 
-![image.png](image%2012.png)
+![img/image.png](img/image%2012.png)
 
 1. I created no tags here.
 
-![image.png](image%2013.png)
+![img/image.png](img/image%2013.png)
 
 1. And finally, we review and create it.
 
-![image.png](image%2014.png)
+![img/image.png](img/image%2014.png)
 
 # Create Azure Synapse Analytics and Datalake Storage Gen2
 
 ---
 
-<aside>
-<img src="https://www.notion.so/icons/video-camera_orange.svg" alt="https://www.notion.so/icons/video-camera_orange.svg" width="40px" />
-
-- Videos
-    
-    [2024-12-10_11-51-13.mp4](2024-12-10_11-51-13.mp4)
-    
-    [2024-12-10_11-53-42.mp4](2024-12-10_11-53-42.mp4)
-    
-</aside>
-
 1. The first step is opening our resource group from the resource groups tab:
 
-![image.png](image%2015.png)
+![img/image.png](img/image%2015.png)
 
 1. Once we select it, we click on “create”:
 
-![image.png](image%2016.png)
+![img/image.png](img/image%2016.png)
 
 1. Inside the marketplace, search for synapse analytics, and once found, create the resource:
 
-![image.png](image%2017.png)
+![img/image.png](img/image%2017.png)
 
 1. We then configure the basics page as shown below, and also create the Data Lake Storage Gen2 and file system (Bronze) that we will use to store the data from the on-premise sql server. 
 
-![image.png](image%2018.png)
+![img/image.png](img/image%2018.png)
 
-![image.png](image%2019.png)
+![img/image.png](img/image%2019.png)
 
-![image.png](image%2020.png)
+![img/image.png](img/image%2020.png)
 
-![image.png](image%2021.png)
+![img/image.png](img/image%2021.png)
 
 1. We are not modifying any of the next config pages, so we can skip directly to “Review and create”
 
-![image.png](image%2022.png)
+![img/image.png](img/image%2022.png)
 
 # Creating bronze-silver-gold hierarchy
 
@@ -346,28 +329,21 @@ With this steps we have almost everything configured on the local part.
 
 ---
 
-<aside>
-<img src="https://www.notion.so/icons/video-camera_orange.svg" alt="https://www.notion.so/icons/video-camera_orange.svg" width="40px" />
-
-[2024-12-10_10-16-35.mp4](2024-12-10_10-16-35.mp4)
-
-</aside>
-
 1. We look for Azure Databricks in the azure search bar and click on “Azure Databricks”
 
-![image.png](image%2023.png)
+![img/image.png](img/image%2023.png)
 
 1. Then click on “create”
 
-![image.png](image%2024.png)
+![img/image.png](img/image%2024.png)
 
 1. We choose the resource group
 
-![image.png](image%2025.png)
+![img/image.png](img/image%2025.png)
 
 1. We don’t change any of the following configurations, so we just need to review an create the resource:
 
-![image.png](image%2026.png)
+![img/image.png](img/image%2026.png)
 
 # Create Azure Key Vault
 
@@ -600,10 +576,10 @@ for old_col_name in column_names:
 
 # Creating Permissions For Synapse Analytics
 
-![image.png](image%2027.png)
+![img/image.png](img/image%2027.png)
 
-![image.png](image%2028.png)
+![img/image.png](img/image%2028.png)
 
 # Alternative Solution
 
-![image.png](image%2029.png)
+![img/image.png](img/image%2029.png)
