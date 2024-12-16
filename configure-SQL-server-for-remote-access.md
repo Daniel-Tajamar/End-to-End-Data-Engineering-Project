@@ -21,3 +21,5 @@ To make sure we can connect through Azure to our local database this are the set
 ![img/image.png](img/image%209.png)
 
 With this steps we have almost everything configured on the local part.
+
+[Siguiente](https://github.com/Daniel-Tajamar/End-to-End-Data-Engineering-Project/blob/main/create-resource-group.md)
