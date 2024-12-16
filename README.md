@@ -204,19 +204,19 @@ C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\Backup
 
 ![img/image.png](img/image.png)
 
-1. When it connects, we have to right clic on “databases” and then “Restore Database”
+2. When it connects, we have to right clic on “databases” and then “Restore Database”
 
 ![img/cAP1.png](img/cAP1.png)
 
-1. Choose device and clic the three dots on the right
+3. Choose device and clic the three dots on the right
 
 ![img/image.png](img/image%201.png)
 
-1. A new window will show in which we´re selecting “Add”
+4. A new window will show in which we´re selecting “Add”
 
 ![img/image.png](img/image%202.png)
 
-1. Finally, we select the .bak file and every “Ok” button until this window shows up:
+5. Finally, we select the .bak file and every “Ok” button until this window shows up:
 
 ![img/image.png](img/image%203.png)
 
@@ -230,15 +230,15 @@ To make sure we can connect through Azure to our local database this are the set
 
 ![img/image.png](img/image%205.png)
 
-1. Fill the fields…
+2. Fill the fields…
 
 ![img/image.png](img/image%206.png)
 
-1. Check db_datareader under the Membership tab and clic “OK”
+3. Check db_datareader under the Membership tab and clic “OK”
 
 ![img/image.png](img/image%207.png)
 
-1. Also ensure that server authentication is on “SQL Server and Windows Authentication mode” and the server allows remote connections. So, to check this we have to right clic on the server:
+4. Also ensure that server authentication is on “SQL Server and Windows Authentication mode” and the server allows remote connections. So, to check this we have to right clic on the server:
 
 ![img/image.png](img/image%208.png)
 
@@ -255,19 +255,19 @@ With this steps we have almost everything configured on the local part.
 
 ![img/image.png](img/image%2010.png)
 
-1. Inside Resource groups, we create a new one:
+2. Inside Resource groups, we create a new one:
 
 ![img/image.png](img/image%2011.png)
 
-1. We give the resource group a name (I´m calling ours “ddmrs-proyecto-1”), and the region in which the group is going to be located.
+3. We give the resource group a name (I´m calling ours “ddmrs-proyecto-1”), and the region in which the group is going to be located.
 
 ![img/image.png](img/image%2012.png)
 
-1. I created no tags here.
+4. I created no tags here.
 
 ![img/image.png](img/image%2013.png)
 
-1. And finally, we review and create it.
+5. And finally, we review and create it.
 
 ![img/image.png](img/image%2014.png)
 
@@ -279,15 +279,15 @@ With this steps we have almost everything configured on the local part.
 
 ![img/image.png](img/image%2015.png)
 
-1. Once we select it, we click on “create”:
+2. Once we select it, we click on “create”:
 
 ![img/image.png](img/image%2016.png)
 
-1. Inside the marketplace, search for synapse analytics, and once found, create the resource:
+3. Inside the marketplace, search for synapse analytics, and once found, create the resource:
 
 ![img/image.png](img/image%2017.png)
 
-1. We then configure the basics page as shown below, and also create the Data Lake Storage Gen2 and file system (Bronze) that we will use to store the data from the on-premise sql server. 
+4. We then configure the basics page as shown below, and also create the Data Lake Storage Gen2 and file system (Bronze) that we will use to store the data from the on-premise sql server. 
 
 ![img/image.png](img/image%2018.png)
 
@@ -297,7 +297,7 @@ With this steps we have almost everything configured on the local part.
 
 ![img/image.png](img/image%2021.png)
 
-1. We are not modifying any of the next config pages, so we can skip directly to “Review and create”
+5. We are not modifying any of the next config pages, so we can skip directly to “Review and create”
 
 ![img/image.png](img/image%2022.png)
 
